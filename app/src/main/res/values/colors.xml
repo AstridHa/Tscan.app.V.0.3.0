@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="blue_sky">#08A9FF</color>
+    <color name="green">#1E9405</color>
+    <color name="lighter_green">#27C406</color>
+    <color name="green_tscan">#87C63A</color>
+    <color name="yellow_green">#8BC34A</color>
+
+
+    <color name="purple">#9C27B0</color>
+    <!--<color name="rasberry">#E0175B</color>-->
+    <color name="red">#E01717</color>
+    <color name="orange">#F86D00</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="gold">#FFB700</color>
+
+    <color name="white">#FFFF</color>
+    <color name="white_ish">#FAFAFA</color>
+    <color name="lighter_grey">#F1F1F1</color>
+    <color name="light_grey">#CCCCCC</color>
+    <color name="less_grey">#C5C5C5</color>
+    <color name="grey">#8B8B8B</color>878787
+    <color name="grey_icon">#878787</color>
+    <color name="greyer">#6D6D6D</color>
+    <color name="black">#000000</color>
+
+
+
+
+
+</resources>

@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_margin="20dp"
+    android:padding="20dp"
+    >
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Caution"
+        android:textStyle="bold"
+        android:textSize="@dimen/dialog_title"
+        android:textColor="@color/green"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/alertdialog_correctiveaction"
+        android:textStyle="normal"
+        android:textSize="@dimen/activity_subcontent"
+        android:layout_marginTop="24dp"
+        android:layout_marginBottom="24dp"
+        android:textColor="@color/black"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="24dp"
+        android:background="@drawable/bck_white_grey_radius_10"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="4dp"
+        >
+
+        <EditText
+            android:id="@+id/corrective_action_et"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/transparent"
+            android:hint="Describe your action..."
+            android:imeOptions="actionDone"
+            android:inputType="textAutoCorrect|textMultiLine"
+            android:maxLength="150"
+            android:paddingStart="8dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="8dp"
+            android:textCursorDrawable="@color/grey"
+            android:textSize="@dimen/activity_subcontent"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_gravity="end"
+        android:paddingEnd="4dp"
+        >
+
+        <TextView
+            android:id="@+id/corrective_action_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cancel"
+            android:textAllCaps="true"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/green"
+            android:paddingTop="16dp"
+            android:paddingEnd="16dp"
+            />
+
+        <TextView
+            android:id="@+id/corrective_action_save"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textAllCaps="true"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:textColor="@color/green"
+            android:paddingTop="16dp"
+            android:paddingStart="32dp"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>

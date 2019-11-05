@@ -1,0 +1,29 @@
+<resources>
+    <dimen name="fab_margin">15dp</dimen>
+
+
+    <!--TEXT DIMENSIONS-->
+
+    <!--activities-->
+    <dimen name="activity_title">20sp</dimen>
+    <dimen name="activity_content">18sp</dimen>
+    <dimen name="activity_subcontent">16sp</dimen>
+    <dimen name="activity_annotation">12sp</dimen>
+
+    <!--Buttons-->
+    <dimen name="activity_button_text">14sp</dimen>
+
+    <!--Dialog title-->
+    <dimen name="dialog_title">20sp</dimen>
+    <dimen name="dialog_button_text">14sp</dimen>
+
+    <!--Boom Menu-->
+    <dimen name="standard_4">4dp</dimen>
+    <dimen name="standard_12">12dp</dimen>
+    <dimen name="standard_23">23dp</dimen>
+    <dimen name="standard_55">55dp</dimen>
+    <dimen name="standard_100">100dp</dimen>
+    <dimen name="standard_145">145dp</dimen>
+
+
+</resources>

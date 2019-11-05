@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">tscan.app</string>
+    <string name="action_settings">Settings</string>
+    <string name="degree">\u2103</string>
+    <string name="ok">Okay</string>
+    <string name="alertdialog_correctiveaction">Temperature should always be above 75\u2103. Please take a corrective action:</string>
+</resources>

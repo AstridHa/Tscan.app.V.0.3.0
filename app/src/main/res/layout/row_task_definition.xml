@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    android:clickable="true"
+    android:focusable="true"
+    >
+
+
+    <!-- ICON CIRCLE-->
+    <RelativeLayout
+        android:id="@+id/task_definition_circle_RV"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/bck_circle_grey"
+        android:elevation="3dp"
+        >
+
+        <ImageView
+            android:id="@+id/task_definition_icon"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="8dp"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_core"
+            />
+
+        <ProgressBar
+            android:id="@+id/task_definition_circle_progress_bar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:indeterminate="false"
+            android:max="100"
+            android:progressDrawable="@drawable/circle_progress_foreground"
+            android:rotation="-90" />
+
+    </RelativeLayout>
+
+    <!--CONTENT CARDVIEW AND BOOTOM ICONS - topMargin = half of the Icon Circle above-->
+    <RelativeLayout
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="20dp"
+    >
+
+        <!-- CARDVIEW-->
+        <androidx.cardview.widget.CardView
+            android:id="@+id/task_definition"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardCornerRadius="10dp"
+            card_view:cardElevation="2dp"
+            card_view:cardUseCompatPadding="true"
+            >
+
+            <LinearLayout
+            android:id="@+id/task_definition_data"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_margin="32dp"
+            >
+
+                <TextView
+                android:id="@+id/task_definition_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Core Cooking Measurement"
+                android:textStyle="bold"
+                android:textSize="@dimen/activity_subcontent"
+                android:textColor="@color/grey"
+                android:layout_gravity="center_horizontal"
+                />
+
+
+                <TextView
+                    android:id="@+id/task_definition_location"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Location: Catering"
+                    android:textSize="@dimen/activity_button_text"
+                    android:textColor="@color/grey"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </LinearLayout>
+
+
+        </androidx.cardview.widget.CardView>
+
+        <RelativeLayout
+            android:id="@+id/task_definition_alarm"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bck_ripple_white_lightgrey_radius_15"
+            android:elevation="4dp"
+            android:layout_toEndOf="@+id/task_definition_add"
+            android:layout_below="@+id/task_definition"
+            android:layout_marginTop="-25dp"
+            android:layout_marginBottom="8dp"
+            >
+
+            <ImageView
+                android:id="@+id/task_definition_alarm_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_alarm_white"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/task_definition_add"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bck_ripple_white_lightgrey_radius_15"
+            android:elevation="4dp"
+            android:layout_marginStart="40dp"
+            android:layout_marginEnd="40dp"
+            android:layout_below="@+id/task_definition"
+            android:layout_marginTop="-25dp"
+            android:layout_centerHorizontal="true"
+            >
+
+            <ImageView
+                android:id="@+id/task_definition_add_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_add_grey"
+                />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/task_definition_pending"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/bck_ripple_white_lightgrey_radius_15"
+            android:elevation="4dp"
+            android:layout_toStartOf="@+id/task_definition_add"
+            android:layout_below="@+id/task_definition"
+            android:layout_marginTop="-25dp"
+            >
+
+            <ImageView
+                android:id="@+id/task_definition_pending_iv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_margin="8dp"
+                android:layout_centerInParent="true"
+                android:src="@drawable/ic_flagged"
+                />
+
+        </RelativeLayout>
+
+
+    </RelativeLayout>
+
+
+
+
+
+</RelativeLayout>
+
+
+    <!--<androidx.cardview.widget.CardView-->
+        <!--xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+        <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+        <!--xmlns:app="http://schemas.android.com/apk/res-auto"-->
+        <!--android:id="@+id/vertical_cardview"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--card_view:cardBackgroundColor="@color/cardview_light_background"-->
+        <!--card_view:cardCornerRadius="10dp"-->
+        <!--card_view:cardElevation="2dp"-->
+        <!--card_view:cardUseCompatPadding="true">-->
+
+
+        <!--&lt;!&ndash;CONTAINER&ndash;&gt;-->
+        <!--<LinearLayout-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--&gt;-->
+
+            <!--&lt;!&ndash;COUNTDOWN BAR - on the left&ndash;&gt;-->
+            <!--<RelativeLayout-->
+                <!--android:id="@+id/cardview_expiry_bar"-->
+                <!--android:layout_width="15dp"-->
+                <!--android:layout_height="match_parent"-->
+                <!--android:layout_alignParentStart="true"-->
+                <!--android:background="@drawable/shape_expiry_bar_grey"-->
+                <!--/>-->
+
+            <!--<RelativeLayout-->
+                <!--android:layout_width="match_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_margin="10dp"-->
+                <!--android:layout_toStartOf="@+id/cardview_expiry_bar"-->
+                <!--&gt;-->
+
+                <!--&lt;!&ndash; TARGET CIRCLE&ndash;&gt;-->
+                <!--<RelativeLayout-->
+                        <!--android:id="@+id/task_definition_circle_RV"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_centerVertical="true"-->
+                        <!--android:clickable="true"-->
+                        <!--android:focusable="true"-->
+                        <!--&gt;-->
+
+                    <!--<ProgressBar-->
+                        <!--android:id="@+id/task_definition_circle_img"-->
+                        <!--style="?android:attr/progressBarStyleHorizontal"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:indeterminate="false"-->
+                        <!--android:max="100"-->
+                        <!--android:progress="100"-->
+                        <!--android:progressDrawable="@drawable/circle_progress_background"-->
+                        <!--android:rotation="-90" />-->
+
+
+                        <!--<ImageView-->
+                            <!--android:id="@+id/task_definition_icone"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="match_parent"-->
+                            <!--android:layout_margin="8dp"-->
+                            <!--android:layout_centerInParent="true"-->
+                            <!--/>-->
+
+                    <!--<ProgressBar-->
+                        <!--android:id="@+id/uncompleted_circle_progress_bar"-->
+                        <!--style="?android:attr/progressBarStyleHorizontal"-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="match_parent"-->
+                        <!--android:indeterminate="false"-->
+                        <!--android:max="100"-->
+                        <!--android:progressDrawable="@drawable/circle_progress_foreground"-->
+                        <!--android:rotation="-90" />-->
+
+                    <!--</RelativeLayout>-->
+
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/task_definition_data"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:layout_toEndOf="@id/task_definition_circle_RV"-->
+                    <!--android:layout_centerVertical="true"-->
+                    <!--android:layout_marginStart="16dp"-->
+                    <!--&gt;-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/task_definition_title"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textStyle="bold"-->
+                        <!--android:textSize="@dimen/activity_subcontent"-->
+                        <!--android:textColor="@color/grey"-->
+                        <!--/>-->
+
+                    <!--<TextView-->
+                        <!--android:id="@+id/task_definition_deadline"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:textStyle="normal"-->
+                        <!--android:textSize="@dimen/activity_annotation"-->
+                        <!--android:textColor="@color/grey"-->
+                        <!--/>-->
+
+                <!--</LinearLayout>-->
+
+            <!--</RelativeLayout>-->
+
+
+        <!--</LinearLayout-->
+
+
+
+<!--</androidx.cardview.widget.CardView>-->
+

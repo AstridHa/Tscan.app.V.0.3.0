@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"
+    android:clickable="true"
+    android:focusable="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_above="@id/panel_ll"
+        android:layout_marginBottom="-20dp"
+        android:background="@drawable/shape_panel_shadow"
+        android:orientation="vertical"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="4dp" />
+
+    <RelativeLayout
+        android:id="@+id/panel_ll"
+        android:layout_width="match_parent"
+        android:layout_height="250dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-10dp"
+        android:background="@drawable/shape_panel"
+        android:orientation="vertical"
+        android:paddingStart="8dp"
+        android:paddingTop="4dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="4dp">
+
+        <RelativeLayout
+            android:id="@+id/sensor_toolbar"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
+            >
+
+            <ImageView
+                android:id="@+id/sensor_toolbar_arrow"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/ic_down" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:layout_toEndOf="@+id/sensor_toolbar_arrow"
+                android:text="Pair to a sensor"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/activity_content" />
+
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/sensor_toolbar_refresh"
+            android:layout_width="wrap_content"
+            android:layout_height="48dp"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="8dp"
+            >
+
+            <TextView
+                android:id="@+id/sensor_refresh_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:text="Refresh"
+                android:textColor="@color/grey"
+                android:textSize="@dimen/activity_annotation" />
+
+            <ProgressBar
+                android:id="@+id/sensor_progressBar"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_centerInParent="true"
+                android:layout_centerVertical="true"
+                android:theme="@style/AppTheme.ProgressBar"
+                android:visibility="gone" />
+
+        </RelativeLayout>
+
+
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/sensor_pullToRefresh"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/sensor_toolbar"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="10dp">
+
+            <ListView
+                android:id="@+id/sensor_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/sensor_toolbar"
+                android:divider="@null" />
+
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+
+            <TextView
+                android:id="@+id/sensor_noAvailable_tv"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:textAlignment="center"
+                android:textColor="@color/less_grey"
+                android:visibility="gone"
+                />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

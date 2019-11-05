@@ -1,0 +1,475 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/task_core_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!--SCROLLVIEW-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <!--CONTENT CONTAINER-->
+            <LinearLayout
+                android:id="@+id/task_core_scroll_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                >
+
+
+                <!--HEADER / Status-->
+                <LinearLayout
+                    android:id="@+id/task_core_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="24dp"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <RelativeLayout
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center_horizontal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        >
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progress="100"
+                            android:progressDrawable="@drawable/circle_progress_background"
+                            android:rotation="-90" />
+
+                        <ImageView
+                            android:id="@+id/task_core_status_iv"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_core"
+                            android:padding="2dp"
+                            />
+
+                        <ProgressBar
+                            android:id="@+id/cardview_circle_progress_bar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/circle_progress_foreground"
+                            android:rotation="-90" />
+
+                    </RelativeLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:layout_marginTop="8dp">
+
+                        <TextView
+                            android:id="@+id/task_core_status_title"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="Task type"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_content"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!--TASK CONTENT-->
+                <!--Uncompleted-->
+                <LinearLayout
+                    android:id="@+id/task_core_content_uncompleted"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+
+                    <TextView
+                        android:id="@+id/task_core_instructions"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:text="instructions"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/activity_subcontent"
+                        android:textStyle="normal"
+                        />
+
+
+                    <RelativeLayout
+                        android:id="@+id/task_core_foodCategory"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:layout_marginTop="32dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/task_core_foodCategory_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Select food category"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_content"
+                            />
+
+                        <ImageView
+                            android:id="@+id/task_core_foodCategory_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_down"
+                            android:layout_alignParentEnd="true"
+                            />
+
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/food_category_recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:layout_below="@+id/task_core_foodCategory_tv"
+                            android:theme="@style/MyMaterialDrawerTheme"
+                            android:visibility="gone"
+                            />
+
+
+                    </RelativeLayout>
+
+
+
+                    <RelativeLayout
+                        android:id="@+id/task_core_foodType"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:layout_marginTop="32dp"
+                        >
+
+                        <TextView
+                            android:id="@+id/task_core_foodType_tv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Select food type"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_content"
+                            />
+
+                        <ImageView
+                            android:id="@+id/task_core_foodType_iv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_down"
+                            android:layout_alignParentEnd="true"
+                            />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/food_type_recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:layout_below="@+id/task_core_foodType_tv"
+                            android:theme="@style/MyMaterialDrawerTheme"
+                            android:visibility="gone"
+                            />
+
+                    </RelativeLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/task_core_batch_inputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/task_core_batch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="15"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/task_core_description_inputLayout"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/task_core_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:imeOptions="actionDone"
+                            android:inputType="number"
+                            android:maxLength="15"
+                            />
+
+                    </com.google.android.material.textfield.TextInputLayout>
+
+
+
+                    <!-- TEMPERATURE CIRCLE-->
+                    <RelativeLayout
+                        android:id="@+id/task_tempereture_frame"
+                        android:layout_width="150dp"
+                        android:layout_height="150dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="40dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:id="@+id/scan_circle"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/scan_circle_grey" />
+
+                        <TextView
+                            android:id="@+id/scan_tempereture_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="30dp"
+                            android:textAlignment="center"
+                            android:textColor="@color/green"
+                            android:textSize="25sp"
+                            android:visibility="gone" />
+
+                        <ImageView
+                            android:id="@+id/scan_pair_to_sensor"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_centerInParent="true"
+                            android:layout_margin="50dp"
+                            android:src="@drawable/ic_touch"
+                            android:visibility="visible" />
+
+                    </RelativeLayout>
+                    <!--END Uncompleted-->
+                </LinearLayout>
+
+                <!--Completed-->
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/task_core_content_completed"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_marginStart="24dp"-->
+                    <!--android:layout_marginEnd="24dp"-->
+                    <!--android:layout_marginBottom="32dp"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:visibility="gone">-->
+
+                    <!--<androidx.recyclerview.widget.RecyclerView-->
+                        <!--android:id="@+id/task_core_content_completed_rv"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"/>-->
+
+
+                    <!--&lt;!&ndash;END Completed&ndash;&gt;-->
+
+                <!--</LinearLayout>-->
+
+                <!--Expired-->
+                <!--<LinearLayout-->
+                    <!--android:id="@+id/task_core_content_expired"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:layout_marginStart="24dp"-->
+                    <!--android:layout_marginEnd="24dp"-->
+                    <!--android:background="@android:color/transparent"-->
+                    <!--android:orientation="vertical"-->
+                    <!--android:visibility="visible">-->
+
+                    <!--<androidx.recyclerview.widget.RecyclerView-->
+                        <!--android:id="@+id/task_core_content_expired_rv"-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"/>-->
+
+                    <!--&lt;!&ndash;END Expired&ndash;&gt;-->
+                <!--</LinearLayout>-->
+
+
+                <!--END CONTENT CONTAINER-->
+            </LinearLayout>
+
+            <!--END SCROLLVIEW-->
+        </ScrollView>
+
+        <!-- FAB SAVE-->
+        <RelativeLayout
+            android:id="@+id/task_core_save_fab"
+            android:layout_width="62dp"
+            android:layout_height="61dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/fab_shadow"
+            android:clickable="true"
+            android:focusable="true">
+
+            <RelativeLayout
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bck_white_radius_100">
+
+                <ImageView
+                    android:layout_width="44dp"
+                    android:layout_height="44dp"
+                    android:layout_centerInParent="true"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_save" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+        <!-- FAB SENSOR-->
+        <RelativeLayout
+            android:id="@+id/task_core_sensor_fab"
+            android:layout_width="62dp"
+            android:layout_height="61dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="6dp"
+            android:background="@drawable/fab_shadow"
+            android:clickable="true"
+            android:focusable="true">
+
+            <RelativeLayout
+                android:layout_width="52dp"
+                android:layout_height="52dp"
+                android:layout_marginStart="1dp"
+                android:layout_marginTop="1dp"
+                android:background="@drawable/bck_white_radius_100">
+
+                <ImageView
+                    android:id="@+id/task_core_sensor_fab_iv"
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:layout_centerInParent="true"
+                    android:padding="8dp"
+                    android:src="@drawable/ic_bluetooth_disconnected" />
+            </RelativeLayout>
+
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/task_core_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingEnd="32dp"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_back"
+
+            />
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/task_core_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="5dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="@color/white"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="16dp"
+            >
+
+            <ProgressBar
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:theme="@style/AppTheme.ProgressBar"
+                android:layout_marginEnd="8dp"
+                />
+
+            <TextView
+                android:id="@+id/progress_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textStyle="normal"
+                android:textColor="@color/green"
+                android:layout_marginStart="8dp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <FrameLayout
+        android:id="@+id/fragment_sensor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+    </FrameLayout>
+
+
+</RelativeLayout>
+

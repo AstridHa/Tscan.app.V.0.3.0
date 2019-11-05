@@ -1,0 +1,36 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/green</item>
+        <item name="colorPrimaryDark">@color/green</item>
+        <item name="colorAccent">@color/white</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+        <item name="colorPrimaryDark">@color/light_grey</item>
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="AppTheme.ProgressBar">
+        <item name="colorAccent">@color/green</item>
+    </style>
+
+    <style name="MyMaterialDrawerTheme" >
+        <item name="colorPrimary">@color/lighter_grey</item>
+        <item name="colorPrimaryDark">@color/lighter_grey</item>
+        <item name="colorAccent">@color/lighter_grey</item>
+    </style>
+
+    <style name="AlertDialogCustom" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@color/green</item>
+    </style>
+
+    <style name="AlertDialogCustom_warning" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@color/red</item>
+    </style>
+
+</resources>

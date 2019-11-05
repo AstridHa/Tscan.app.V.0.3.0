@@ -1,0 +1,602 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <RelativeLayout
+        android:id="@+id/pending_page"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+
+        <!--SCROLLVIEW-->
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+
+            <!--CONTENT CONTAINER-->
+            <LinearLayout
+                android:id="@+id/pending_scroll_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginTop="32dp"
+                >
+
+
+                <!--HEADER-->
+                <LinearLayout
+                    android:id="@+id/pending_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="24dp"
+                    android:background="@android:color/transparent"
+                    android:orientation="vertical">
+
+                    <!--HEADER progress icon-->
+                    <RelativeLayout
+                        android:layout_width="55dp"
+                        android:layout_height="55dp"
+                        android:layout_gravity="center_horizontal"
+                        android:clickable="true"
+                        android:focusable="true"
+                        >
+
+                        <ProgressBar
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progress="100"
+                            android:progressDrawable="@drawable/circle_progress_background"
+                            android:rotation="-90" />
+
+                        <ImageView
+                            android:id="@+id/pending_icon"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_margin="8dp"
+                            android:layout_centerInParent="true"
+                            android:src="@drawable/ic_core"
+                            android:padding="2dp"
+                            />
+
+                        <ProgressBar
+                            android:id="@+id/pending_progress_bar"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:indeterminate="false"
+                            android:max="100"
+                            android:progressDrawable="@drawable/circle_progress_foreground"
+                            android:rotation="-90" />
+
+                    </RelativeLayout>
+
+                        <!--HEADER pending record data-->
+                        <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:layout_marginTop="8dp">
+
+                            <androidx.cardview.widget.CardView
+                            android:id="@+id/pending_record_data"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            card_view:cardBackgroundColor="@color/cardview_light_background"
+                            card_view:cardCornerRadius="10dp"
+                            card_view:cardElevation="2dp"
+                            card_view:cardUseCompatPadding="true"
+                            android:layout_marginTop="8dp"
+                            android:layout_marginStart="24dp"
+                            android:layout_marginEnd="24dp"
+                            >
+
+                            <!--Horizontal container for the other LinearLayout-->
+                            <RelativeLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_margin="16dp"
+                                android:background="@android:color/transparent">
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:background="@android:color/transparent"
+                                    android:orientation="horizontal"
+                                    android:layout_alignParentEnd="true"
+                                    android:layout_centerVertical="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/pending_temp"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="34.44"
+                                        android:textColor="@color/red"
+                                        android:textSize="@dimen/activity_content"
+                                        android:textStyle="bold"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/pending_unit"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="@string/degree"
+                                        android:textColor="@color/red"
+                                        android:textSize="@dimen/activity_content"
+                                        android:textStyle="bold"
+                                        />
+
+                                </LinearLayout>
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:background="@android:color/transparent"
+                                    android:layout_centerVertical="true"
+                                    android:layout_alignParentStart="true"
+                                    >
+
+                                    <TextView
+                                        android:id="@+id/pending_food_type"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Food type"
+                                        android:textColor="@color/grey"
+                                        android:textSize="@dimen/activity_content"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/pending_batch"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Batch number"
+                                        android:textColor="@color/grey"
+                                        android:textSize="@dimen/activity_annotation"
+                                        android:textStyle="bold" />
+
+                                    <RelativeLayout
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:orientation="horizontal">
+
+                                        <TextView
+                                            android:id="@+id/pending_username"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="by "
+                                            android:textColor="@color/grey"
+                                            android:textSize="@dimen/activity_annotation"
+                                            android:ellipsize="end"
+                                            android:textStyle="normal"
+                                            android:layout_alignParentStart="true"
+                                            android:layout_toStartOf="@+id/pending_date"
+                                            android:layout_marginEnd="16dp"
+                                            />
+
+                                        <TextView
+                                            android:id="@+id/pending_date"
+                                            android:layout_width="wrap_content"
+                                            android:layout_height="wrap_content"
+                                            android:text="date/time:"
+                                            android:textColor="@color/grey"
+                                            android:textSize="@dimen/activity_annotation"
+                                            android:ellipsize="end"
+                                            android:textStyle="normal"
+                                            android:layout_alignParentEnd="true"
+                                            />
+                                    </RelativeLayout>
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+                <!--INSTRUCTION-->
+                <TextView
+                    android:id="@+id/pending_instructions"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:text="Further action required"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/activity_subcontent"
+                    android:textStyle="normal"
+                    android:layout_margin="8dp"
+                    />
+
+                <!--ACTION CONTAINER-->
+                <RelativeLayout
+                    android:id="@+id/pending_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="24dp"
+                    android:layout_marginEnd="24dp"
+                    android:background="@android:color/transparent"
+                    >
+
+                    <LinearLayout
+                        android:id="@+id/pending_action_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:visibility="visible"
+                        >
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/pending_action_bin"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            card_view:cardCornerRadius="15dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            card_view:cardBackgroundColor="@color/cardview_light_background"
+                            card_view:cardElevation="2dp"
+                            card_view:cardUseCompatPadding="true"
+                            >
+
+
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="8dp"
+                                android:layout_gravity="center"
+                                >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_centerInParent="true"
+                                >
+
+                                <ImageView
+                                    android:id="@+id/pending_action_bin_iv"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:src="@drawable/ic_delete"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/pending_action_bin_tv"
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:text="Bin item"
+                                    android:textSize="13sp"
+                                    android:textStyle="bold"
+                                    android:textColor="@color/grey"
+                                    android:layout_gravity="center_horizontal"
+                                    />
+
+                            </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/pending_action_cook"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            card_view:cardCornerRadius="15dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            card_view:cardBackgroundColor="@color/cardview_light_background"
+                            card_view:cardElevation="2dp"
+                            card_view:cardUseCompatPadding="true"
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="8dp"
+                                android:layout_gravity="center"
+                                >
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="vertical"
+                                    android:layout_centerInParent="true"
+                                    >
+
+                                    <ImageView
+                                        android:id="@+id/pending_action_cook_iv"
+                                        android:layout_width="30dp"
+                                        android:layout_height="30dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:src="@drawable/ic_core"
+                                        />
+
+                                    <TextView
+                                        android:id="@+id/pending_action_cook_tv"
+                                        android:layout_height="wrap_content"
+                                        android:layout_width="match_parent"
+                                        android:text="Cook again"
+                                        android:textSize="13sp"
+                                        android:textStyle="normal"
+                                        android:layout_gravity="center_horizontal"
+                                        />
+
+                                </LinearLayout>
+
+                            </RelativeLayout>
+
+
+                        </androidx.cardview.widget.CardView>
+
+                        <androidx.cardview.widget.CardView
+                            android:id="@+id/pending_action_other"
+                            android:layout_width="0dp"
+                            android:layout_weight="1"
+                            android:layout_height="wrap_content"
+                            card_view:cardCornerRadius="15dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            card_view:cardBackgroundColor="@color/cardview_light_background"
+                            card_view:cardElevation="2dp"
+                            card_view:cardUseCompatPadding="true"
+                            >
+
+                            <RelativeLayout
+                                android:layout_width="70dp"
+                                android:layout_height="70dp"
+                                android:layout_margin="8dp"
+                                android:layout_gravity="center"
+                                >
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:layout_centerInParent="true"
+                                >
+
+                                <ImageView
+                                    android:id="@+id/pending_action_other_iv"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:layout_gravity="center_horizontal"
+                                    android:src="@drawable/ic_add_grey"
+                                    />
+
+                                <TextView
+                                    android:id="@+id/pending_action_other_tv"
+                                    android:layout_height="wrap_content"
+                                    android:layout_width="wrap_content"
+                                    android:text="Other"
+                                    android:textSize="13sp"
+                                    android:textStyle="normal"
+                                    android:layout_gravity="center_horizontal"
+                                    />
+
+                            </LinearLayout>
+
+                            </RelativeLayout>
+
+                        </androidx.cardview.widget.CardView>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/pending_action_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:visibility="gone"
+                        android:layout_below="@+id/pending_action_list"
+                        >
+
+                        <RelativeLayout
+                            android:id="@+id/task_tempereture_frame"
+                            android:layout_width="150dp"
+                            android:layout_height="150dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="24dp"
+                            android:clickable="true"
+                            android:focusable="true"
+                            >
+
+                            <ImageView
+                                android:id="@+id/scan_circle"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:background="@drawable/scan_circle_grey" />
+
+                            <TextView
+                                android:id="@+id/scan_tempereture_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="30dp"
+                                android:textAlignment="center"
+                                android:textColor="@color/green"
+                                android:textSize="25sp"
+                                android:visibility="gone" />
+
+                            <ImageView
+                                android:id="@+id/scan_pair_to_sensor"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_centerInParent="true"
+                                android:layout_margin="50dp"
+                                android:src="@drawable/ic_touch"
+                                android:visibility="visible"
+                                />
+
+                        </RelativeLayout>
+
+                    </LinearLayout>
+
+
+                </RelativeLayout>
+
+
+                <!--END CONTENT CONTAINER-->
+            </LinearLayout>
+
+            <!--END SCROLLVIEW-->
+        </ScrollView>
+
+            <!-- FAB SAVE-->
+            <RelativeLayout
+                android:id="@+id/pending_save_fab"
+                android:layout_width="62dp"
+                android:layout_height="61dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginEnd="6dp"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/fab_shadow"
+                android:clickable="true"
+                android:focusable="true">
+
+                <RelativeLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/bck_white_radius_100">
+
+                    <ImageView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:layout_centerInParent="true"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_save" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+            <!-- FAB SENSOR-->
+            <RelativeLayout
+                android:id="@+id/pending_sensor_fab"
+                android:layout_width="62dp"
+                android:layout_height="61dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentBottom="true"
+                android:layout_marginStart="16dp"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/fab_shadow"
+                android:clickable="true"
+                android:focusable="true">
+
+                <RelativeLayout
+                    android:layout_width="52dp"
+                    android:layout_height="52dp"
+                    android:layout_marginStart="1dp"
+                    android:layout_marginTop="1dp"
+                    android:background="@drawable/bck_white_radius_100">
+
+                    <ImageView
+                        android:id="@+id/pending_sensor_fab_iv"
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:layout_centerInParent="true"
+                        android:padding="8dp"
+                        android:src="@drawable/ic_bluetooth_disconnected" />
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/pending_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:paddingStart="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="16dp"
+        android:paddingEnd="32dp"
+        android:background="@android:color/transparent"
+        android:clickable="true"
+        android:focusable="true"
+        >
+
+        <ImageView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@drawable/ic_back"
+            />
+
+    </RelativeLayout>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pending_progress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        card_view:cardCornerRadius="5dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="8dp"
+        android:paddingTop="8dp"
+        android:clickable="true"
+        android:focusable="true"
+        android:backgroundTint="@color/white"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        >
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_margin="16dp"
+            >
+
+            <ProgressBar
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:theme="@style/AppTheme.ProgressBar"
+                android:layout_marginEnd="8dp"
+                />
+
+            <TextView
+                android:id="@+id/progress_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Loading..."
+                android:textStyle="normal"
+                android:textColor="@color/green"
+                android:layout_marginStart="8dp"
+                android:layout_gravity="center_vertical"
+                />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <FrameLayout
+        android:id="@+id/fragment_sensor"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        >
+    </FrameLayout>
+
+
+</RelativeLayout>
+

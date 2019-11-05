@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/task_core_content_pending"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent"
+    >
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pending_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        card_view:cardBackgroundColor="@color/cardview_light_background"
+        card_view:cardCornerRadius="10dp"
+        card_view:cardElevation="2dp"
+        card_view:cardUseCompatPadding="true"
+        android:layout_centerInParent="true"
+        >
+
+        <!--Horizontal container for the other LinearLayout-->
+        <RelativeLayout
+            android:id="@+id/item_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="16dp"
+            android:background="@android:color/transparent">
+
+            <LinearLayout
+                android:id="@+id/pending_temp_ll"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:orientation="horizontal"
+                android:layout_alignParentEnd="true"
+                >
+
+                <TextView
+                    android:id="@+id/pending_temp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="34.44"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/activity_content"
+                    android:textStyle="bold"
+                    />
+
+                <TextView
+                    android:id="@+id/pending_unit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/degree"
+                    android:textColor="@color/red"
+                    android:textSize="@dimen/activity_content"
+                    android:textStyle="bold"
+                    />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pending_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@android:color/transparent"
+                android:orientation="vertical"
+                android:layout_alignParentStart="true"
+                android:layout_toStartOf="@+id/pending_temp_ll"
+                android:layout_marginEnd="8dp"
+                >
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:id="@+id/pending_food_icon"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_core"
+                            android:layout_marginEnd="8dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/pending_food_type"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Food type:"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_content"
+                            android:textStyle="bold"
+                            android:ellipsize="end"
+                            />
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/pending_batch"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="#"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/activity_subcontent"
+                        android:ellipsize="end"
+                        android:textStyle="normal" />
+
+                </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/pending_user"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@android:color/transparent"
+                android:layout_below="@+id/pending_details"
+                android:layout_alignParentStart="true"
+                android:layout_marginEnd="8dp"
+                android:layout_marginTop="8dp"
+                >
+
+                <TextView
+                    android:id="@+id/pending_username"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="by "
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/activity_annotation"
+                    android:ellipsize="end"
+                    android:textStyle="normal"
+                    android:layout_marginEnd="16dp"
+                    />
+
+                <TextView
+                    android:id="@+id/pending_date"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="date/time:"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/activity_annotation"
+                    android:ellipsize="end"
+                    android:textStyle="normal"
+                    />
+
+            </LinearLayout>
+
+        </RelativeLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+</RelativeLayout>

@@ -1,0 +1,222 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lighter_grey"
+    tools:context=".Fragments.Fragment_dashboard"
+    >
+
+    <LinearLayout
+        android:id="@+id/main_category_tasks"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="8dp"
+        >
+
+        <!--<androidx.cardview.widget.CardView-->
+            <!--android:id="@+id/main_cardview_todolist"-->
+            <!--android:layout_width="0dp"-->
+            <!--android:layout_weight="1"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--card_view:cardCornerRadius="15dp"-->
+            <!--android:clickable="true"-->
+            <!--android:focusable="true"-->
+            <!--xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+            <!--card_view:cardBackgroundColor="@color/cardview_light_background"-->
+            <!--card_view:cardElevation="2dp"-->
+            <!--card_view:cardUseCompatPadding="true"-->
+            <!--&gt;-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="70dp"-->
+                <!--android:layout_height="70dp"-->
+                <!--android:orientation="vertical"-->
+                <!--android:layout_margin="8dp"-->
+                <!--android:layout_gravity="center_horizontal"-->
+                <!--&gt;-->
+
+                <!--<ImageView-->
+                    <!--android:id="@+id/main_cardview_todolist_iv"-->
+                    <!--android:layout_width="30dp"-->
+                    <!--android:layout_height="30dp"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--android:src="@drawable/ic_today_blue"-->
+                    <!--/>-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/main_cardview_todolist_nb"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:text="0"-->
+                    <!--android:textSize="17sp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="@color/blue_sky"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--/>-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/main_cardview_todolist_title"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:text="Today's list"-->
+                    <!--android:textSize="13sp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--android:textColor="@color/blue_sky"-->
+                    <!--android:layout_gravity="center_horizontal"-->
+                    <!--/>-->
+
+            <!--</LinearLayout>-->
+
+        <!--</androidx.cardview.widget.CardView>-->
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/main_cardview_pending"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardElevation="2dp"
+            card_view:cardUseCompatPadding="true"
+            >
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:orientation="vertical"
+                android:layout_margin="8dp"
+                android:layout_gravity="center_horizontal"
+                >
+
+                <ImageView
+                    android:id="@+id/main_cardview_pending_iv"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_flagged"
+                    />
+
+                <TextView
+                    android:id="@+id/main_cardview_pending_nb"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="0"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:id="@+id/main_cardview_pending_title"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Pending"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/main_cardview_completed"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            card_view:cardCornerRadius="15dp"
+            android:clickable="true"
+            android:focusable="true"
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            card_view:cardBackgroundColor="@color/cardview_light_background"
+            card_view:cardElevation="2dp"
+            card_view:cardUseCompatPadding="true"
+            >
+
+            <LinearLayout
+                android:layout_width="70dp"
+                android:layout_height="70dp"
+                android:orientation="vertical"
+                android:layout_margin="8dp"
+                android:layout_gravity="center_horizontal"
+                >
+
+                <ImageView
+                    android:id="@+id/main_cardview_completed_iv"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_gravity="center_horizontal"
+                    android:src="@drawable/ic_completed"
+                    />
+
+                <TextView
+                    android:id="@+id/main_cardview_completed_nb"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="0"
+                    android:textSize="17sp"
+                    android:textStyle="bold"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+                <TextView
+                    android:id="@+id/main_cardview_completed_title"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:text="Completed"
+                    android:textSize="13sp"
+                    android:textStyle="normal"
+                    android:layout_gravity="center_horizontal"
+                    />
+
+            </LinearLayout>
+
+        </androidx.cardview.widget.CardView>
+
+    </LinearLayout>
+
+    <!--<TextView-->
+        <!--android:id="@+id/main_task_title"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:text="Task Category"-->
+        <!--android:textStyle="bold"-->
+        <!--android:textColor="@color/grey"-->
+        <!--android:textSize="@dimen/activity_content"-->
+        <!--android:layout_below="@+id/main_category_tasks"-->
+        <!--android:layout_marginStart="16dp"-->
+        <!--android:layout_marginTop="16dp"-->
+        <!--android:layout_marginBottom="8dp"-->
+        <!--/>-->
+
+        <!--<View-->
+            <!--android:id="@+id/main_task_title_line"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="2dp"-->
+            <!--android:background="@color/grey"-->
+            <!--android:layout_below="@+id/main_task_title"-->
+            <!--android:layout_marginStart="16dp"-->
+            <!--/>-->
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/main_recyclerview_vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/main_category_tasks"
+        android:layout_marginTop="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        />
+
+</RelativeLayout>

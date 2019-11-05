@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    >
+
+<androidx.cardview.widget.CardView
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="20dp"
+    android:paddingStart="8dp"
+    android:paddingEnd="8dp"
+    android:paddingBottom="4dp"
+    android:paddingTop="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:layout_margin="15dp"
+
+    >
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="10dp"
+        >
+
+            <RelativeLayout
+                android:id="@+id/probe_row_top"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <RelativeLayout
+                    android:id="@+id/probe_row_button_connect_LL"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/style_button_bluetooth"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:onClick="onClick"
+                    android:clickable="true"
+                    android:focusable="true"
+                    >
+
+                    <ImageView
+                        android:id="@+id/probe_row_button_connect"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:padding="12dp"
+                        android:src="@drawable/ic_bluetooth" />
+
+                </RelativeLayout>
+
+                <TextView
+                    android:id="@+id/probe_row_deviceName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Device Name"
+                    android:textAllCaps="false"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/activity_button_text"
+                    android:textStyle="bold"
+                    android:layout_alignParentTop="true"
+                    android:layout_alignParentStart="true"
+                    android:layout_toStartOf="@id/probe_row_button_connect_LL"
+                    android:layout_marginEnd="10dp"
+                    />
+
+                <TextView
+                    android:id="@+id/probe_row_connectionState"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Disconnected"
+                    android:textAllCaps="false"
+                    android:textAppearance="?android:textAppearanceSmall"
+                    android:textColor="@color/grey"
+                    android:textSize="@dimen/activity_annotation"
+                    android:textStyle="italic"
+                    android:layout_alignParentStart="true"
+                    android:layout_below="@id/probe_row_deviceName"
+                    />
+
+                <LinearLayout
+                    android:id="@+id/probe_row_connected_device_info"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginTop="10dp"
+                    android:visibility="gone"
+                    android:layout_below="@id/probe_row_connectionState"
+                    >
+
+                        <TextView
+                            android:id="@+id/probe_row_temperature"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Temperature"
+                            android:textAllCaps="false"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_subcontent"
+                            />
+
+                        <TextView
+                            android:id="@+id/probe_row_datetime"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@id/probe_row_temperature"
+                            android:text="Date"
+                            android:textAllCaps="false"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_subcontent"
+                            />
+
+                        <TextView
+                            android:id="@+id/probe_row_batteryLevel"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Battrey"
+                            android:textAllCaps="false"
+                            android:textAppearance="?android:textAppearanceLarge"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_subcontent"
+                            />
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+    </RelativeLayout>
+
+</androidx.cardview.widget.CardView>
+
+</LinearLayout>

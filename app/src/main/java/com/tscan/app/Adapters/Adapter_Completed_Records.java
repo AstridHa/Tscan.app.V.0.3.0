@@ -16,7 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.tscan.app.Data.Model_haccp_food_item_types;
 import com.tscan.app.Data.Model_haccp_task_result_core_cooking;
 import com.tscan.app.R;
-import com.tscan.app.UI_listeners.UI_Listener_Adapter_Completed_uploaded_icon;
+import com.tscan.app.UI_listeners.UI_Listener_Adapter_Completed_Uploaded_Icon;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,7 +32,7 @@ public class Adapter_Completed_Records extends RecyclerView.Adapter<Adapter_Comp
     private List<Model_haccp_food_item_types> model_food_types;
 
 
-    public static UI_Listener_Adapter_Completed_uploaded_icon ui_listener_uploaded_count = new UI_Listener_Adapter_Completed_uploaded_icon();
+    public static UI_Listener_Adapter_Completed_Uploaded_Icon ui_listener_uploaded_count = new UI_Listener_Adapter_Completed_Uploaded_Icon();
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -62,21 +62,27 @@ public class Adapter_Completed_Records extends RecyclerView.Adapter<Adapter_Comp
         /////////////////////////////////////////////////////////////////////////
 
         viewHolder.recycler_completed_temp.setText(String.valueOf(model_records.get(position).getRecords_latest_reading()));
-        viewHolder.recycler_completed_food_type.setText(String.valueOf(model_food_types.get(model_records.get(position).getRecords_food_item_type_id())));
         viewHolder.recycler_completed_batch.setText("#" + model_records.get(position).getRecords_batch_number());
         viewHolder.recycler_completed_username.setText("by " + model_records.get(position).getRecords_initiated_by_user());
+
+        //if there is no food type, then display food category
+        if(model_records.get(position).getRecords_food_item_type_name() == null) {
+            viewHolder.recycler_completed_food_type.setText(String.valueOf(model_records.get(position).getRecords_food_item_category_name()));
+        } else {
+            viewHolder.recycler_completed_food_type.setText(String.valueOf(model_records.get(position).getRecords_food_item_type_name()));
+        }
+
         convertCompletionUnix(model_records.get(position).getRecords_initiated_timestamp_unix(), viewHolder);
         setTaskImage(model_records.get(position).getRecords_task_result_type_id(), viewHolder);
-
-        viewHolder.recycler_completed_action_ll.setVisibility(View.GONE);
 
         if(model_records.get(position).getRecords_timestamp_uploaded_unix() != null){
             viewHolder.cardview_upload_status.setImageDrawable(mContext.getResources().getDrawable(R.drawable.ic_uploaded));
         }
 
-        if(!String.valueOf(model_records.get(position).getRecords_latest_corrective_action_type_id()).isEmpty() ){
+        viewHolder.recycler_completed_action_ll.setVisibility(View.GONE);
+        if(!String.valueOf(model_records.get(position).getRecords_food_item_freetext()).isEmpty() ){
             viewHolder.recycler_completed_action_ll.setVisibility(View.VISIBLE);
-            viewHolder.recycler_completed_action.setText(String.valueOf(model_records.get(position).getRecords_latest_corrective_action_type_id()));
+            viewHolder.recycler_completed_action.setText(String.valueOf(model_records.get(position).getRecords_food_item_freetext()));
         }
     }
 

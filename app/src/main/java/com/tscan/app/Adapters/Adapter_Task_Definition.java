@@ -23,7 +23,6 @@ import com.tscan.app.Data.Model_haccp_location;
 import com.tscan.app.Data.Model_haccp_task_definition;
 import com.tscan.app.Data.Model_haccp_task_result_core_cooking;
 import com.tscan.app.Data.Model_haccp_task_window;
-import com.tscan.app.Database.Database_HACCP;
 import com.tscan.app.Fragments.Fragment_task_core;
 import com.tscan.app.R;
 import com.tscan.app.Utils.Utils;
@@ -33,6 +32,7 @@ import org.json.JSONException;
 
 import java.util.List;
 
+import static com.tscan.app.Activities.Activity_login.viewModel_haccp_queries;
 import static com.tscan.app.Utils.Utils.action_open;
 
 public class Adapter_Task_Definition extends RecyclerView.Adapter<Adapter_Task_Definition.ViewHolder> {
@@ -43,10 +43,6 @@ public class Adapter_Task_Definition extends RecyclerView.Adapter<Adapter_Task_D
     private List<Model_haccp_task_definition> model_task_definition;
 //    private Dao_join dao_join;
 //    private Database_HACCP db_definition;
-
-    private List<Model_haccp_task_window> model_window;
-    private List<Model_haccp_location> model_location;
-    private List<Model_haccp_task_result_core_cooking> model_records;
 
 /////////////////////////////////////////////////////////////////////////
 //   ADAPTER CONSTRUCTOR                                               //
@@ -77,28 +73,17 @@ public class Adapter_Task_Definition extends RecyclerView.Adapter<Adapter_Task_D
         String task_definition_name = String.valueOf(model_task_definition.get(position).getTask_definition_name());
         int task_definition_location_id = model_task_definition.get(position).getTask_definition_location_id();
 
-//        int window_result_count = model_task_definition.get(position).getJoined_result_count();
-//        int window_quantity_required = model_task_definition.get(position).getJoined_definition_quantity_required();
-//        long window_deadline_time = model_task_definition.get(position).getJoined_window_end_time_unix();
-//        long window_countdown_sec = (window_deadline_time - current_time);
-
         Log.i("action_open_act", String.valueOf(action_open));
 
         /////////////////////////////////////////////////////////////////////////
         //   DISPLAY ITEMS                                                     //
         /////////////////////////////////////////////////////////////////////////
         setTaskImage(model_task_definition.get(position).task_definition_task_result_type_id, viewHolder);
-//        convertTaskCountdown(window_deadline_time, window_countdown_sec, viewHolder);
-//        setExpiryBar(window_countdown_sec, viewHolder);
-//        setCompletionPercentage(window_result_count, window_quantity_required, viewHolder);
 
         viewHolder.task_title.setText(task_definition_name);
         viewHolder.task_title.setTextColor(mContext.getResources().getColor(R.color.grey));
-
-//        String location_id = dao_join.get_location_name_by_id(model_task_definition.get(position).getTask_definition_location_id());
-
-//        viewHolder.task_location.setText(location_id);
         viewHolder.task_location.setTextColor(mContext.getResources().getColor(R.color.grey));
+
         /////////////////////////////////////////////////////////////////////////
         //   ITEMS ONCLICK LISTENER                                            //
         /////////////////////////////////////////////////////////////////////////

@@ -127,7 +127,7 @@ public class Activity_login extends AppCompatActivity implements ActivityCompat.
 
         user_add.setBackground(getResources().getDrawable(R.drawable.bck_white_radius_100));
         user_next.setBackground(getResources().getDrawable(R.drawable.bck_white_radius_100));
-        user_add.setCardElevation(4);
+//        user_add.setCardElevation(4);
 
         /** Check for Permissions */
         ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.WAKE_LOCK}, ASK_MULTIPLE_PERMISSION_REQUEST_CODE);
@@ -240,16 +240,6 @@ public class Activity_login extends AppCompatActivity implements ActivityCompat.
                 finish();
             }
         });
-
-        /** When data are now cached successfully, go to next page */
-//        ui_listener_login.setWindowsGeneratedSuccessful(new UI_Listener_login.OnWindowsGeneratedSuccessful() {
-//            @Override
-//            public void onDataInsertIntoRoomSuccessful(String windowsGeneratedSuccessful) {
-//                Intent intent_mainactivity = new Intent(Activity_login.this, Activity_main.class);
-//                startActivity(intent_mainactivity);
-//                finish();
-//            }
-//        });
 
         ui_listener_login.setCatchError(new UI_Listener_login.OnCatchError() {
             @Override
@@ -423,7 +413,6 @@ public class Activity_login extends AppCompatActivity implements ActivityCompat.
             viewModel_haccp_queries.delete_haccp_task_result_type();
             viewModel_haccp_queries.delete_haccp_task_window();
             viewModel_haccp_queries.delete_model_joins();
-//            viewModel_haccp_queries.delete_model_window_joined_data();
 
             return new_task_data;
 
@@ -502,7 +491,7 @@ public class Activity_login extends AppCompatActivity implements ActivityCompat.
 
             Log.i("Listener_room", "put data in room");
 
-//            try {
+            try {
 
             List<Model_getData_reading.Model_gethaccp_task_categories> haccp_task_categories = model_getData_readings[0].getHaccp_task_categories();
 
@@ -668,16 +657,17 @@ public class Activity_login extends AppCompatActivity implements ActivityCompat.
                         haccp_task_window.setStart_time_unix(task_window_start_time_unix);
                         haccp_task_window.setEnd_time_unix(task_window_end_time_unix);
 
+
                         viewModel_haccp_queries.insert_haccp_task_window(haccp_task_window);
                     }
                 }
             }
                 return locations;
 
-//            } catch (Exception e) {
-//                ui_listener_login.callCatchError(e.getMessage());
-//                return null;
-//            }
+            } catch (Exception e) {
+                ui_listener_login.callCatchError(e.getMessage());
+                return null;
+            }
         }
 
         protected void onPostExecute(List<Model_getData_reading.Model_getlocations> result) {

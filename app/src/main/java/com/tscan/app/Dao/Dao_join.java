@@ -75,6 +75,9 @@ public interface Dao_join {
 //    LiveData<Integer> get_count_uncompleted();
 
 
+    @Query("SELECT htw.task_window_start_time_unix, htw.task_window_end_time_unix,(SELECT COUNT(*) FROM haccp_task_result_core_cooking WHERE task_window_task_definition_id = htw.task_window_task_definition_id AND records_initiated_timestamp_unix >= htw.task_window_start_time_unix  AND records_initiated_timestamp_unix < htw.task_window_end_time_unix AND records_task_result_status_id = 1) completed_count, (SELECT COUNT(*) FROM haccp_task_result_core_cooking WHERE task_window_task_definition_id = htw.task_window_task_definition_id AND records_initiated_timestamp_unix >= htw.task_window_start_time_unix  AND records_initiated_timestamp_unix < htw.task_window_end_time_unix AND records_task_result_status_id = 2) incomplete_count FROM haccp_task_window htw WHERE htw.task_window_task_definition_id = task_window_task_definition_id AND htw.task_window_start_time_unix >= :current_timestamp_unix AND htw.task_window_end_time_unix < :current_timestamp_unix")
+    LiveData<List<Model_haccp_task_definition>> query_join_task_definition_window(long current_timestamp_unix);
+
     /////////////////////////////////////////////////////////////////////////
     //   Model_haccp_location                                              //
     /////////////////////////////////////////////////////////////////////////
@@ -181,13 +184,6 @@ public interface Dao_join {
     @Query("SELECT * FROM haccp_food_item_types WHERE food_type_id = 3")
     LiveData<List<Model_haccp_food_item_types>> getFoodItemTypes_by_category_id( );
 
-//    @Query("SELECT * FROM haccp_food_item_types WHERE food_type_id = :food_category_id")
-//    List<Model_haccp_food_item_types> getFoodItemTypes_by_category_id_bis(int food_category_id);
-    @Query("SELECT * FROM haccp_food_item_types WHERE food_type_id = :food_category_id")
-    Model_haccp_food_item_types[] getFoodItemTypes_by_category_id_bis(int food_category_id);
-
-
-
 
     @Query("DELETE FROM haccp_food_item_types")
     void delete_Async_food_item_types();
@@ -205,7 +201,8 @@ public interface Dao_join {
     @Insert
     void insert_haccp_corrective_actions(Model_haccp_corrective_action_type corrective_action_type);
 
-
+    @Query("SELECT * FROM haccp_corrective_action_type WHERE corrective_action_company_id = :company_id ")
+    LiveData<List<Model_haccp_corrective_action_type>> getCorrectiveActionByCompanyId(int company_id);
 
 
     /////////////////////////////////////////////////////////////////////////
@@ -290,14 +287,17 @@ public interface Dao_join {
     @Query("UPDATE haccp_task_result_core_cooking SET records_timestamp_uploaded_unix = :uploaded_time WHERE `records_task_definition_id ` = :id AND records_initiated_timestamp_unix = :timestamp_unix")
     void update_timestamp_uploaded_record(int id, int timestamp_unix, int uploaded_time);
 
-//    @Query("UPDATE haccp_task_result_core_cooking SET reading = :temperature AND remedial_text = :remedial AND haccp_task_result_status_id = :result_status_id AND mobile_sensor_id = :sensor_id AND timestamp_unix = :unix AND user_details = :username WHERE timestamp_unix = :original_unix")
-    @Query("UPDATE haccp_task_result_core_cooking SET records_latest_reading = :temperature WHERE records_initiated_timestamp_unix = :original_unix")
-    void update_record(Integer original_unix, Integer temperature);
+    @Query("UPDATE haccp_task_result_core_cooking SET records_latest_corrective_action_freetext = :remedial_action_freetext, records_latest_reading_mobile_sensor_id = :new_sensor_id , records_latest_reading_device_serial_number = :new_sensor_serial_number, records_latest_reading_user = :username, records_latest_reading_timestamp_unix = :current_time, records_task_result_status_id = :status, records_latest_corrective_action_type_id = :remedial_action_selected_id, records_latest_reading = :temperature WHERE records_initiated_timestamp_unix = :original_unix")
+    void update_record(Integer original_unix, Integer temperature, int remedial_action_selected_id, int status, String remedial_action_freetext, long current_time, String new_sensor_id, String new_sensor_serial_number, String username);
 
     @Query("SELECT COUNT(records_task_result_status_id) FROM haccp_task_result_core_cooking  WHERE records_task_result_status_id = 1")//Status = passed
     LiveData<Integer> get_count_completed();
 
-    @Query("SELECT COUNT(records_task_result_status_id) FROM haccp_task_result_core_cooking WHERE records_task_result_status_id = 2")//Status = failed
+    @Query("SELECT COUNT(`records_task_definition_id `) FROM haccp_task_result_core_cooking WHERE records_task_result_status_id = 2")//Status = failed
     LiveData<Integer> get_count_pending();
+
+
+    @Query("SELECT name FROM haccp_task_result_type WHERE id = :defintion_result_type_id")
+    LiveData<String> get_definition_result_type_name_by_id(int defintion_result_type_id);
 }
 

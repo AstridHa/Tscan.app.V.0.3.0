@@ -159,7 +159,7 @@ public class Fragment_create_user extends Fragment {
         ui_listener_login.setUserDuplicate(new UI_Listener_login.OnUserDuplicate() {
             @Override
             public void onUserDuplicate(String user_duplicate) {
-                Utils.warning_dialog(getContext(), "Caution", "This username already exist.");
+                Utils.warning_dialog(getContext(), "Couldn't proceed", "This username already exist.");
             }
         });
     }

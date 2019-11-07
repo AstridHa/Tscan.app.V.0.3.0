@@ -38,6 +38,7 @@ public class Fragment_performance extends Fragment {
         /////////////////////////////////////////////////////////////////////////
         //   INITIALIZATION                                                    //
         /////////////////////////////////////////////////////////////////////////
+        final long current_time = (System.currentTimeMillis() / 1000L);
 
         viewModel_haccp_queries = ViewModelProviders.of(this).get(ViewModel_haccp_queries.class);
         db_definition = Database_HACCP.getDatabase_haccp(getActivity());
@@ -52,6 +53,8 @@ public class Fragment_performance extends Fragment {
         rv_vertical.setAdapter(adapter_task_definition);
 
         viewModel_haccp_queries.query_task_definition().observe(Fragment_performance.this, task -> adapter_task_definition.getData(task));
+
+        viewModel_haccp_queries.query_join_task_definition_window(current_time).observe(Fragment_performance.this, joined_data -> adapter_task_definition.getData(joined_data));
 
         return view;
     }

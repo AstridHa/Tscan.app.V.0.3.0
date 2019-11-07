@@ -20,8 +20,6 @@ public class Model_haccp_task_window {
     @ColumnInfo(name = "task_window_end_time_unix")
     private int end_time_unix;
 
-//    @ColumnInfo(name = "upload_status")  // 1: yet to upload, 2: uploaded to National
-//    public String upload_status;
 
 
     public Model_haccp_task_window() {

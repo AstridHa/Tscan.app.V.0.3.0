@@ -1,6 +1,7 @@
 package com.tscan.app.ViewModel;
 
 import android.app.Application;
+import android.os.AsyncTask;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -68,7 +69,6 @@ public class ViewModel_haccp_queries extends AndroidViewModel {
         super(application);
         repository_haccp_queries = new Repository_haccp_queries(application);
 
-//        get_haccp_task_definition = repository_haccp_queries.get_all_haccp_task_definition();
         get_haccp_location = repository_haccp_queries.get_all_haccp_location();
         get_haccp_task_category = repository_haccp_queries.get_all_categories();
         get_haccp_task_result_status = repository_haccp_queries.get_all_haccp_task_result_status();
@@ -76,12 +76,6 @@ public class ViewModel_haccp_queries extends AndroidViewModel {
         get_haccp_task_window = repository_haccp_queries.get_all_haccp_task_window();
         get_haccp_user_list = repository_haccp_queries.get_all_users();
         get_mobile_device = repository_haccp_queries.getModel_mobile_device();
-
-//        query_data_to_display_all_task_windows = repository_haccp_queries.query_data_to_display_all_task_windows();
-//        query_all_joined_data_table = repository_haccp_queries.query_all_joined_data_table();
-//        query_joined_uncompleted_task_windows = repository_haccp_queries.query_joined_uncompleted_task_windows();
-//        query_joined_completed_task_windows = repository_haccp_queries.query_joined_completed_task_windows();
-//        query_joined_pending_task_windows = repository_haccp_queries.query_joined_pending_task_windows();
 
     }
 
@@ -109,9 +103,7 @@ public class ViewModel_haccp_queries extends AndroidViewModel {
     public void delete_model_joins() {
         repository_haccp_queries.delete_model_join();
     }
-//    public void delete_model_window_joined_data() {
-//        repository_haccp_queries.delete_model_window_joined_data();
-//    }
+
     public void delete_haccp_task_definition() {
         repository_haccp_queries.delete_haccp_task_definition();
     }
@@ -155,6 +147,9 @@ public class ViewModel_haccp_queries extends AndroidViewModel {
 //        return query_data_to_display_pending_task_windows;
 //    }
 
+    public LiveData<List<Model_haccp_task_definition>> query_join_task_definition_window(long current_time) {
+        return repository_haccp_queries.query_join_task_definition_window(current_time);
+    }
 
     /////////////////////////////////////////////////////////////////////////
     //   Model_window_joined_data                                          //
@@ -261,6 +256,17 @@ public class ViewModel_haccp_queries extends AndroidViewModel {
         return get_haccp_task_result_type;
     }
 
+
+    public LiveData<String> get_definition_result_type_name_by_id(int category) {
+        return repository_haccp_queries.get_definition_result_type_name_by_id(category);
+    }
+
+//    public LiveData<Integer> get_count_pending() {
+//        return repository_haccp_queries.get_count_pending;
+//    }
+
+
+
     public void insert_haccp_task_result_type(Model_haccp_task_result_type model_haccp_task_result_type) {
         repository_haccp_queries.insert_haccp_task_result_type(model_haccp_task_result_type);
     }
@@ -295,11 +301,6 @@ public class ViewModel_haccp_queries extends AndroidViewModel {
         return repository_haccp_queries.getFoodItemTypes_by_category_id;
     }
 
-    public Model_haccp_food_item_types[] getFoodItemTypes_by_category_id_bis(int category) {
-        Log.i("viewmodel_category)", String.valueOf(category));
-        return repository_haccp_queries.getFoodItemTypes_by_category_id_bis(category);
-    }
-
     public void insert_haccp_food_type(Model_haccp_food_item_types food_item_types) {
         repository_haccp_queries.insert_haccp_food_type(food_item_types);
     }
@@ -313,6 +314,9 @@ public class ViewModel_haccp_queries extends AndroidViewModel {
         repository_haccp_queries.insert_haccp_corrective_actions(corrective_action_type);
     }
 
+    public LiveData<List<Model_haccp_corrective_action_type>> getCorrectiveActionByCompanyId(int company_id) {
+        return repository_haccp_queries.getCorrectiveActionByCompanyId(company_id);
+    }
 
 
     /////////////////////////////////////////////////////////////////////////
@@ -377,8 +381,8 @@ public class ViewModel_haccp_queries extends AndroidViewModel {
         repository_haccp_queries.insert_record(model_haccp_task_result_core_cooking);
     }
 
-    public void update_record(Integer original_unix, Integer temperature) {
-        repository_haccp_queries.update_record(original_unix, temperature );
+    public void update_record(Integer original_unix, Integer temperature, int remedial_action_selected, int status, String remedial_action_freetext, long current_time, String new_sensor_id, String new_sensor_serial_number, String username) {
+        repository_haccp_queries.update_record(original_unix, temperature, remedial_action_selected, status, remedial_action_freetext, current_time, new_sensor_id, new_sensor_serial_number, username );
     }
 
     public void update_timestamp_uploaded_record(int task_def_id, int timestamp_unix, Integer timestamp_uploaded) {

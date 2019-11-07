@@ -38,9 +38,7 @@ public class Adapter_Pending_Records extends RecyclerView.Adapter<Adapter_Pendin
     private Context mContext;
     private List<Model_haccp_task_result_core_cooking> model_records;
 
-    private List<Model_haccp_food_item_types> model_food_types;
-
-    /////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////
 //   ADAPTER CONSTRUCTOR                                               //
 /////////////////////////////////////////////////////////////////////////
     public Adapter_Pending_Records(Context context) {
@@ -65,9 +63,21 @@ public class Adapter_Pending_Records extends RecyclerView.Adapter<Adapter_Pendin
         //   DISPLAY ITEMS                                                     //
         /////////////////////////////////////////////////////////////////////////
         viewHolder.pending_temp.setText(String.valueOf(model_records.get(position).getRecords_latest_reading()));
-        viewHolder.pending_food_type.setText(String.valueOf(model_food_types.get(model_records.get(position).getRecords_food_item_type_id())));
         viewHolder.pending_batch.setText("#" + model_records.get(position).getRecords_batch_number());
         viewHolder.pending_username.setText("by " + model_records.get(position).getRecords_initiated_by_user());
+
+        //if there is no food type, then display food category
+        if(model_records.get(position).getRecords_food_item_type_name() == null) {
+            viewHolder.pending_food_type.setText(String.valueOf(model_records.get(position).getRecords_food_item_category_name()));
+        } else {
+            viewHolder.pending_food_type.setText(String.valueOf(model_records.get(position).getRecords_food_item_type_name()));
+        }
+
+        viewHolder.pending_description.setVisibility(View.GONE);
+        if(!String.valueOf(model_records.get(position).getRecords_food_item_freetext()).isEmpty() ){
+            viewHolder.pending_description.setVisibility(View.VISIBLE);
+            viewHolder.pending_description_tv.setText(String.valueOf(model_records.get(position).getRecords_food_item_freetext()));
+        }
 
         convertDateUnix(model_records.get(position).getRecords_initiated_timestamp_unix(), viewHolder);
 
@@ -159,8 +169,9 @@ public class Adapter_Pending_Records extends RecyclerView.Adapter<Adapter_Pendin
 //  VIEWHOLDER INITIALIZATION                                          //
 /////////////////////////////////////////////////////////////////////////
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView pending_temp, pending_food_type, pending_batch, pending_username, pending_date;
+        TextView pending_temp, pending_food_type, pending_batch, pending_username, pending_date, pending_description_tv;
         ImageView pending_food_icon;
+        LinearLayout pending_description;
 
         ViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -170,6 +181,8 @@ public class Adapter_Pending_Records extends RecyclerView.Adapter<Adapter_Pendin
             pending_food_type = itemView.findViewById(R.id.pending_food_type);
             pending_date = itemView.findViewById(R.id.pending_date);
             pending_food_icon = itemView.findViewById(R.id.pending_food_icon);
+            pending_description = itemView.findViewById(R.id.pending_description);
+            pending_description_tv = itemView.findViewById(R.id.pending_description_tv);
         }
     }
 }

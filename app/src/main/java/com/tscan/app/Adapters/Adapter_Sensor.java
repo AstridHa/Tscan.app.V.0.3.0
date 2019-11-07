@@ -42,7 +42,7 @@ public class Adapter_Sensor extends BaseAdapter {
         ViewHolder_FragmentSensor viewHolder;
 
         if (view == null) {
-            view = View.inflate(mContext, R.layout.fragment_sensor_row, null);
+            view = View.inflate(mContext, R.layout.row_sensor, null);
             viewHolder = new ViewHolder_FragmentSensor(view);
             mViewHolders.add(viewHolder);
             view.setTag(viewHolder);

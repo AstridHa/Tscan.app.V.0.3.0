@@ -178,12 +178,8 @@ public class Fragment_settings extends Fragment {
 
         btn_logout.setOnClickListener(v -> {
             Utils.avoid_double_click(v); // this is to avoid the event to tiigger 2 times in a row
-            Activity_login.user_model.setUser_name(null);
-            Activity_login.user_model.setUser_initials(null);
-            Singleton_Settings.getsettings_instance().setCurrent_user(null);
+            removeTokenAndUserDetails();
 
-            Intent intent_mainactivity = new Intent(getActivity(), Activity_login.class);
-            startActivity(intent_mainactivity);
         });
 
         /////////////////////////////////////////////////////////////////////////
@@ -194,7 +190,12 @@ public class Fragment_settings extends Fragment {
             new Async_download_data_to_room().execute(data_array);
         });
 
-//        ui_listener_settings.setDataInsertIntoRoomSuccessful(insert_successful -> new Async_generate_windows().execute());
+        ui_listener_settings.setDataInsertIntoRoomSuccessful(new UI_Listener_settings.OnDataInsertIntoRoomSuccessful_settings() {
+            @Override
+            public void onDataInsertIntoRoomSuccessful_settings(String insert_successful) {
+                dismiss_dialog();
+            }
+        });
 
         ui_listener_settings.setWindowsGeneratedSuccessful(windowsGeneratedSuccessful -> show_dialog_successful("Tasks have been generated successfully"));
 
@@ -204,6 +205,7 @@ public class Fragment_settings extends Fragment {
 
         ui_listener_settings.settokenSuccessful_settings(token_successful -> {
             show_dialog_successful("Token has refreshed successfully");
+            set_UI();
         });
 
         ui_listener_settings.settokenfail_settings(token_fail -> {
@@ -217,6 +219,7 @@ public class Fragment_settings extends Fragment {
 
         return view;
     }
+
 
 
 /////////////////////////////////////////////////////////////////////////
@@ -274,6 +277,15 @@ public class Fragment_settings extends Fragment {
         department_name.setText(Singleton_Settings.getsettings_instance().getDepartment_name());
     }
 
+    private void removeTokenAndUserDetails() {
+        Activity_login.user_model.setUser_name(null);
+        Activity_login.user_model.setUser_initials(null);
+        Singleton_Settings.cleanup_singleton();
+        Intent intent_mainactivity = new Intent(getActivity(), Activity_login.class);
+        startActivity(intent_mainactivity);
+
+    }
+
     private void disable_user_interaction(){
         getActivity().getWindow().setFlags(WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE,
                 WindowManager.LayoutParams.FLAG_NOT_TOUCHABLE);
@@ -319,7 +331,6 @@ public class Fragment_settings extends Fragment {
         able_user_interaction();
     }
 
-
     private static void decode_token(String token) {
 
         try {
@@ -347,6 +358,8 @@ public class Fragment_settings extends Fragment {
                 device_table.setEnabled(0);
                 device_table.setName("Why name");
                 viewModel_haccp_queries.insert_moble_device(device_table);
+
+                ui_listener_settings.callTokenSuccessful_settings("successful");
 
             } catch (JSONException e) {
                 e.printStackTrace();
@@ -383,7 +396,6 @@ public class Fragment_settings extends Fragment {
             viewModel_haccp_queries.delete_haccp_task_result_type();
             viewModel_haccp_queries.delete_haccp_task_window();
             viewModel_haccp_queries.delete_model_joins();
-//            viewModel_haccp_queries.delete_model_window_joined_data();
 
             return null;
 
@@ -412,7 +424,6 @@ public class Fragment_settings extends Fragment {
                 viewModel_haccp_queries.delete_haccp_task_result_type();
                 viewModel_haccp_queries.delete_haccp_task_window();
                 viewModel_haccp_queries.delete_model_joins();
-//            viewModel_haccp_queries.delete_model_window_joined_data();
 
             return passed_new_task_data;
 
@@ -503,6 +514,7 @@ public class Fragment_settings extends Fragment {
             List<Model_getData_reading.Model_gethaccp_task_categories> haccp_task_categories = model_getData_readings[0].getHaccp_task_categories();
 
             try {
+
             for(int h = 0; h < haccp_task_categories.size(); h++) {
                 int task_categories_id = (haccp_task_categories.get(h).getId());
                 String task_categories_name = haccp_task_categories.get(h).getName();
@@ -558,7 +570,7 @@ public class Fragment_settings extends Fragment {
                     Model_haccp_food_item_categories food_item_categories = new Model_haccp_food_item_categories();
                     food_item_categories.setFood_category_id(haccp_food_item_categories.get(ee).getId_food_item_categories());
                     food_item_categories.setFood_category_company_id(haccp_food_item_categories.get(ee).getCompany_id_food_item_categories());
-//                    food_item_categories.setFood_category_name(haccp_food_item_categories.get(ee).getName_food_item_categories());
+                    food_item_categories.setFood_category_name(haccp_food_item_categories.get(ee).getName_food_item_categories());
                     food_item_categories.setFood_category_temperature(haccp_food_item_categories.get(ee).getFood_item_categories_core_cooking_pass_temperature());
 
                     viewModel_haccp_queries.insert_haccp_food_category(food_item_categories);
@@ -570,10 +582,14 @@ public class Fragment_settings extends Fragment {
 
                     Model_haccp_food_item_types food_item_types = new Model_haccp_food_item_types();
                     food_item_types.setFood_type_id(haccp_food_item_types.get(aa).getId_food_item_types());
-//                    food_item_types.setFood_type_name(haccp_food_item_types.get(aa).getName_food_item_types());
+                    food_item_types.setFood_type_name(haccp_food_item_types.get(aa).getName_food_item_types());
                     food_item_types.setFood_type_company_id(haccp_food_item_types.get(aa).getHaccp_food_item_company_id());
                     food_item_types.setFood_category_id(haccp_food_item_types.get(aa).getHaccp_food_item_category_id());
                     food_item_types.setFood_type_temperature(haccp_food_item_types.get(aa).getCore_cooking_pass_temperature());
+                    Log.i("settings_upload11", String.valueOf(haccp_food_item_types.get(aa).getHaccp_food_item_category_id()));
+                    Log.i("settings_upload12", String.valueOf(haccp_food_item_types.get(aa).getHaccp_food_item_company_id()));
+                    Log.i("settings_upload13", String.valueOf(haccp_food_item_types.get(aa).getId_food_item_types()));
+                    Log.i("settings_upload14", String.valueOf(haccp_food_item_types.get(aa).getName_food_item_types()));
 
                     viewModel_haccp_queries.insert_haccp_food_type(food_item_types);
                 }
@@ -879,7 +895,6 @@ public class Fragment_settings extends Fragment {
                     @Override
                     public void onResponse(Call<Model_getToken> call, Response<Model_getToken> response) {
                         if (response.isSuccessful()) {
-                            ui_listener_settings.callTokenSuccessful_settings("successful");
                             /** Call Decode_Token to decode the token and save results into SETTINGS_MODEL (Singleton)*/
                             decode_token(response.body().getToken());
                         } else {

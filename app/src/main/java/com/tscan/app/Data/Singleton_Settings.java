@@ -17,6 +17,11 @@ public class Singleton_Settings {
     }
 
 
+    public static void cleanup_singleton(){
+        settings_instance = null;
+    }
+
+
     /** SETTINGS DATA **/
     private String token;
     private String mobile_device_name;

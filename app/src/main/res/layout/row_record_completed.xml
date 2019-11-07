@@ -69,7 +69,6 @@
                 android:layout_marginEnd="8dp"
                 >
 
-
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -109,69 +108,76 @@
                 </LinearLayout>
 
             <LinearLayout
-                android:id="@+id/recycler_completed_action_ll"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@android:color/transparent"
-                android:orientation="horizontal"
-                android:layout_alignParentStart="true"
-                android:layout_below="@+id/recycler_completed_details"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="16dp"
-                >
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_action_taken"
-                    android:layout_marginEnd="8dp"
-                    />
-
-                <TextView
-                    android:id="@+id/recycler_completed_action"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/activity_button_text"
-                    android:ellipsize="end"
-                    android:textStyle="normal" />
-
-            </LinearLayout>
-
-            <LinearLayout
                 android:id="@+id/recycler_completed_user"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
                 android:background="@android:color/transparent"
-                android:layout_below="@+id/recycler_completed_action_ll"
+                android:orientation="vertical"
                 android:layout_alignParentStart="true"
-                android:layout_marginEnd="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_below="@+id/recycler_completed_details"
                 >
 
-                <TextView
-                    android:id="@+id/recycler_completed_username"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="by "
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/activity_annotation"
-                    android:ellipsize="end"
-                    android:textStyle="normal"
-                    android:layout_marginEnd="16dp"
-                    />
+                    <LinearLayout
+                        android:id="@+id/recycler_completed_action_ll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:orientation="horizontal"
+                        android:layout_marginEnd="8dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="8dp"
+                        android:visibility="gone"
+                        >
 
-                <TextView
-                    android:id="@+id/recycler_completed_date"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="date/time:"
-                    android:textColor="@color/grey"
-                    android:textSize="@dimen/activity_annotation"
-                    android:ellipsize="end"
-                    android:textStyle="normal"
-                    />
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:src="@drawable/ic_action_taken_green"
+                            android:layout_marginEnd="8dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/recycler_completed_action"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_button_text"
+                            android:ellipsize="end"
+                            android:textStyle="normal" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:background="@android:color/transparent"
+                        >
+
+                        <TextView
+                            android:id="@+id/recycler_completed_username"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="by "
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_annotation"
+                            android:ellipsize="end"
+                            android:textStyle="normal"
+                            android:layout_marginEnd="16dp"
+                            />
+
+                        <TextView
+                            android:id="@+id/recycler_completed_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="date/time:"
+                            android:textColor="@color/grey"
+                            android:textSize="@dimen/activity_annotation"
+                            android:ellipsize="end"
+                            android:textStyle="normal"
+                            />
+
+                    </LinearLayout>
 
             </LinearLayout>
 

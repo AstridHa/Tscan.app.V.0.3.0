@@ -1,6 +1,6 @@
 package com.tscan.app.UI_listeners;
 
-public class UI_Listener_Adapter_Completed_uploaded_icon {
+public class UI_Listener_Adapter_Completed_Uploaded_Icon {
 
     private boolean listener_uploaded;
     private boolean listener_not_uploaded;

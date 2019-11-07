@@ -22,9 +22,9 @@ public class Utils {
 
 
     public static void avoid_double_click(View v) {
-        v.setEnabled(false);
+        v.setClickable(false);
 
-        new Handler().postDelayed(() -> v.setEnabled(true), MIN_CLICK_INTERVAL);
+        new Handler().postDelayed(() -> v.setClickable(true), MIN_CLICK_INTERVAL);
     }
 
     public static void warning_dialog(Context context, String title, String message){
@@ -114,6 +114,7 @@ public class Utils {
                 }, 5000);
             }
         });
+
         return result;
     }
 }

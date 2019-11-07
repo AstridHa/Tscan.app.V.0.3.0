@@ -1,6 +1,8 @@
 package com.tscan.app.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+//import com.tscan.app.UI_listeners.ExceptionHandler;
 //import com.tscan.app.UI_listeners.ExceptionHandler;
 
 public class TscanActivity extends AppCompatActivity {

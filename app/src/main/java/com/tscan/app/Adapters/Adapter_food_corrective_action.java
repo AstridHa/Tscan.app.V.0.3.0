@@ -2,7 +2,6 @@ package com.tscan.app.Adapters;
 
 import android.content.Context;
 import android.graphics.Color;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,17 +10,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.tscan.app.Data.Model_haccp_food_item_types;
+import com.tscan.app.Data.Model_haccp_corrective_action_type;
 import com.tscan.app.R;
-import com.tscan.app.ViewModel.ViewModel_haccp_queries;
 
 import java.util.List;
 
 import static com.tscan.app.Fragments.Fragment_task_core.ui_listener_new_core_cooking;
 
-public class Adapter_food_type extends RecyclerView.Adapter<Adapter_food_type.ViewHolder>{
+public class Adapter_food_corrective_action extends RecyclerView.Adapter<Adapter_food_corrective_action.ViewHolder>{
 
-    private List<Model_haccp_food_item_types> model_food_types;
+    private List<Model_haccp_corrective_action_type> model_corrective_action;
 
     private LayoutInflater mInflater;
     private Context mContext;
@@ -30,7 +28,7 @@ public class Adapter_food_type extends RecyclerView.Adapter<Adapter_food_type.Vi
 /////////////////////////////////////////////////////////////////////////
 //   ADAPTER CONSTRUCTOR                                               //
 /////////////////////////////////////////////////////////////////////////
-    public Adapter_food_type(Context context) {
+    public Adapter_food_corrective_action(Context context) {
         mInflater = LayoutInflater.from(context);
         mContext = context;
     }
@@ -52,7 +50,7 @@ public class Adapter_food_type extends RecyclerView.Adapter<Adapter_food_type.Vi
         /////////////////////////////////////////////////////////////////////////
         //   DISPLAY ITEMS                                                     //
         /////////////////////////////////////////////////////////////////////////
-        viewHolder.category_name.setText(model_food_types.get(position).getFood_type_name());
+        viewHolder.category_name.setText(model_corrective_action.get(position).getCorrective_action_name());
 
         if (selected_position == position) {
             viewHolder.category_name.setTextColor(Color.parseColor("#1E9405"));
@@ -66,10 +64,9 @@ public class Adapter_food_type extends RecyclerView.Adapter<Adapter_food_type.Vi
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 if (selected_position != position) {
                     selected_position = position;
-                    ui_listener_new_core_cooking.callFoodTypeSelected(model_food_types.get(position).getFood_type_id(), model_food_types.get(position).getFood_type_name(), model_food_types.get(position).getFood_type_temperature());
+                    ui_listener_new_core_cooking.callRemedialActionSelected(model_corrective_action.get(position).getCorrective_action_name(), model_corrective_action.get(position).getCorrective_action_id(), model_corrective_action.get(position).getCorrective_action_new_haccp_task_result_status_id());
                     viewHolder.category_name.setTextColor(Color.parseColor("#1E9405"));
                     notifyDataSetChanged();
                 }
@@ -83,32 +80,16 @@ public class Adapter_food_type extends RecyclerView.Adapter<Adapter_food_type.Vi
 /////////////////////////////////////////////////////////////////////////
     @Override
     public int getItemCount() {
-        if(model_food_types != null){
-            return model_food_types.size(); }
+        if(model_corrective_action != null){
+            return model_corrective_action.size(); }
         else{ return 0; }
     }
 
-
-
-
-    public void set_food_type_list(List<Model_haccp_food_item_types> food_item_types) {
-        this.model_food_types = food_item_types;
+    public void set_corrective_action_list(List<Model_haccp_corrective_action_type> corrective_action) {
+        this.model_corrective_action = corrective_action;
         notifyDataSetChanged();
     }
 
-    public void set_all_but_filter(List<Model_haccp_food_item_types> food_item_types, int category_selected) {
-        model_food_types.clear();
-
-        selected_position = -1;
-
-        for(int h = 0; h < food_item_types.size(); h++) {
-            if(food_item_types.get(h).getFood_category_id() == category_selected) {
-                model_food_types.add(food_item_types.get(h));
-            }
-        }
-
-        notifyDataSetChanged();
-    }
 
 
 /////////////////////////////////////////////////////////////////////////

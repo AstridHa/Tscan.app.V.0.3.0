@@ -23,7 +23,6 @@ public class Adapter_food_category extends RecyclerView.Adapter<Adapter_food_cat
     private List<Model_haccp_food_item_categories> model_food_categories;
     private LayoutInflater mInflater;
     private Context mContext;
-    private ViewModel_haccp_queries viewModel;
     private int selected_position = -1;
 
 /////////////////////////////////////////////////////////////////////////
@@ -66,16 +65,9 @@ public class Adapter_food_category extends RecyclerView.Adapter<Adapter_food_cat
             @Override
             public void onClick(View v) {
 
-                if (selected_position == position) {
-                    selected_position = -1;
-                    ui_listener_new_core_cooking.callFoodCategorySelected(null, model_food_categories.get(position).getFood_category_name());
-                    viewHolder.category_name.setTextColor(Color.parseColor( "#C5C5C5"));
-
-                    notifyDataSetChanged();
-
-                } else {
+                if (selected_position != position) {
                     selected_position = position;
-                    ui_listener_new_core_cooking.callFoodCategorySelected(model_food_categories.get(position).getFood_category_id(), model_food_categories.get(position).getFood_category_name());
+                    ui_listener_new_core_cooking.callFoodCategorySelected(model_food_categories.get(position).getFood_category_id(), model_food_categories.get(position).getFood_category_name(), model_food_categories.get(position).getFood_category_temperature());
                     viewHolder.category_name.setTextColor(Color.parseColor("#1E9405"));
                     notifyDataSetChanged();
                 }

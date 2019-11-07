@@ -135,7 +135,7 @@
 
                         <TextView
                             android:id="@+id/task_core_foodCategory_tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Select food category"
                             android:textColor="@color/grey"
@@ -176,7 +176,7 @@
 
                         <TextView
                             android:id="@+id/task_core_foodType_tv"
-                            android:layout_width="wrap_content"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:text="Select food type"
                             android:textColor="@color/grey"
@@ -233,7 +233,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:imeOptions="actionDone"
-                            android:inputType="number"
+                            android:inputType="textCapSentences"
                             android:maxLength="15"
                             />
 
@@ -280,49 +280,6 @@
                     </RelativeLayout>
                     <!--END Uncompleted-->
                 </LinearLayout>
-
-                <!--Completed-->
-                <!--<LinearLayout-->
-                    <!--android:id="@+id/task_core_content_completed"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:layout_marginStart="24dp"-->
-                    <!--android:layout_marginEnd="24dp"-->
-                    <!--android:layout_marginBottom="32dp"-->
-                    <!--android:background="@android:color/transparent"-->
-                    <!--android:orientation="vertical"-->
-                    <!--android:visibility="gone">-->
-
-                    <!--<androidx.recyclerview.widget.RecyclerView-->
-                        <!--android:id="@+id/task_core_content_completed_rv"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"/>-->
-
-
-                    <!--&lt;!&ndash;END Completed&ndash;&gt;-->
-
-                <!--</LinearLayout>-->
-
-                <!--Expired-->
-                <!--<LinearLayout-->
-                    <!--android:id="@+id/task_core_content_expired"-->
-                    <!--android:layout_width="match_parent"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_gravity="center_horizontal"-->
-                    <!--android:layout_marginStart="24dp"-->
-                    <!--android:layout_marginEnd="24dp"-->
-                    <!--android:background="@android:color/transparent"-->
-                    <!--android:orientation="vertical"-->
-                    <!--android:visibility="visible">-->
-
-                    <!--<androidx.recyclerview.widget.RecyclerView-->
-                        <!--android:id="@+id/task_core_content_expired_rv"-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"/>-->
-
-                    <!--&lt;!&ndash;END Expired&ndash;&gt;-->
-                <!--</LinearLayout>-->
 
 
                 <!--END CONTENT CONTAINER-->

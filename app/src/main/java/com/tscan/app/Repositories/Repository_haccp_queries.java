@@ -22,6 +22,7 @@ import com.tscan.app.Data.Model_join;
 import com.tscan.app.Data.Model_mobile_device;
 import com.tscan.app.Database.Database_HACCP;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static com.tscan.app.Activities.Activity_login.ui_listener_login;
@@ -45,6 +46,9 @@ public class Repository_haccp_queries {
     public LiveData<Integer> get_count_completed;
     public LiveData<Integer> get_count_pending;
 
+    public LiveData<String> get_definition_result_type_name_by_id;
+
+
     public LiveData<List<Model_haccp_food_item_types>> getFoodItemTypes_by_category_id;
 
 
@@ -61,6 +65,7 @@ public class Repository_haccp_queries {
 //        get_count_uncompleted = dao_join.get_count_uncompleted();
         get_count_completed = dao_join.get_count_completed();
         get_count_pending = dao_join.get_count_pending();
+
 
         getFoodItemTypes_by_category_id = dao_join.getFoodItemTypes_by_category_id();
 
@@ -191,6 +196,10 @@ public class Repository_haccp_queries {
 //            return null;
 //        }
 //    }
+
+    public LiveData<List<Model_haccp_task_definition>> query_join_task_definition_window(long current_time) {
+        return dao_join.query_join_task_definition_window(current_time);
+    }
 
 
     /////////////////////////////////////////////////////////////////////////
@@ -451,6 +460,11 @@ public class Repository_haccp_queries {
         return  dao_join.get_all_haccp_task_result_type();
     }
 
+    public LiveData<String>  get_definition_result_type_name_by_id(int result_type_id) {
+        return dao_join.get_definition_result_type_name_by_id(result_type_id);
+    }
+
+
     public void insert_haccp_task_result_type(Model_haccp_task_result_type model_haccp_task_result_type){
         new Insert_Async_task_result_type(dao_join).execute(model_haccp_task_result_type);
     }
@@ -621,10 +635,6 @@ public class Repository_haccp_queries {
         return dao_join.getFoodItemTypes_by_category_id();
     }
 
-    public Model_haccp_food_item_types[] getFoodItemTypes_by_category_id_bis(int category_id) {
-        return dao_join.getFoodItemTypes_by_category_id_bis(category_id);
-    }
-
     public void delete_haccp_food_item_types(){
         new Delete_Async_food_item_types(dao_join).execute();
     }
@@ -668,6 +678,14 @@ public class Repository_haccp_queries {
     public void delete_haccp_corrective_actions(){
         new Delete_haccp_corrective_actions(dao_join).execute();
     }
+
+    public LiveData<List<Model_haccp_corrective_action_type>> getCorrectiveActionByCompanyId(int company_id) {
+        return dao_join.getCorrectiveActionByCompanyId(company_id);
+    }
+
+
+
+
 
     private static class Delete_haccp_corrective_actions extends AsyncTask<Model_haccp_corrective_action_type, Void, Void> {
         private Dao_join dao;
@@ -847,10 +865,6 @@ public class Repository_haccp_queries {
         return dao_join.get_all_tasks_records();
     }
 
-//    public LiveData<List<Model_haccp_task_result_core_cooking>> get_record_by_window_id_repo(int genere) {
-//        return dao_join.get_record_by_window_id(genere);
-//    }
-
     public LiveData<List<Model_haccp_task_result_core_cooking>> query_completed_records() {
         return dao_join.query_completed_records();
     }
@@ -874,21 +888,18 @@ public class Repository_haccp_queries {
         protected Void doInBackground(Model_haccp_task_result_core_cooking... model_haccp_recordz){
             if(model_haccp_recordz != null && model_haccp_recordz.length == 1) {
                 dao_haccp.insert_record(model_haccp_recordz[0]);
+                Log.i("Repo_insert_record", String.valueOf(model_haccp_recordz[0]));
 //                dao_haccp.update_result_count(model_haccp_recordz[0].getRecords_task_definition_id());
             }
             return null;
         }
     }
 
-    public void update_record(Integer original_unix, Integer temperature){
-        Log.i("SAVE_CALLED1", String.valueOf(original_unix));
-        Log.i("SAVE_CALLED1", String.valueOf(temperature));
-
-
-        new Update_async_record(dao_join).execute(original_unix, temperature );
+    public void update_record(Integer original_unix, Integer temperature, int remedial_action_selected, int status, String remedial_action_freetext, long current_time, String new_sensor_id, String new_sensor_serial_number, String username) {
+    new Update_async_record(dao_join).execute(original_unix, temperature, remedial_action_selected, status, remedial_action_freetext, current_time, new_sensor_id, new_sensor_serial_number, username);
     }
 
-    private static class Update_async_record extends AsyncTask<Integer, Void, Void> {
+    private static class Update_async_record extends AsyncTask<Object, Void, Void> {
         private Dao_join async_task_dao;
 
         Update_async_record(Dao_join dao_haccp) {
@@ -896,18 +907,14 @@ public class Repository_haccp_queries {
         }
 
         @Override
-        protected Void doInBackground(Integer... model_haccp_recordz){
-            Log.i("SAVE_CALLED2", String.valueOf(model_haccp_recordz[0]));
-            Log.i("SAVE_CALLED2", String.valueOf(model_haccp_recordz[1]));
-
-
-
-            async_task_dao.update_record(model_haccp_recordz[0], model_haccp_recordz[1]);
+        protected Void doInBackground(Object... data){
+            async_task_dao.update_record((Integer) data[0], (Integer) data[1], (int) data[2],  (int) data[3], String.valueOf(data[4]), (long) data[5], String.valueOf(data[6]),  String.valueOf(data[7]), String.valueOf(data[8]));
             return null;
         }
     }
 
-    public void delete_record(){
+
+        public void delete_record(){
         new Delete_async_record(dao_join).execute();
     }
 
